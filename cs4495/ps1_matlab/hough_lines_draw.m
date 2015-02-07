@@ -15,8 +15,8 @@ function hough_lines_draw(img, outfile, peaks, rho, theta)
     %plot stuff
     for peakidx = 1:size(peaks,1)
         idx = peaks(peakidx, :);
-        r = abs(rho(idx(1)));
-        t = abs(theta(idx(2)));
+        r = rho(idx(1));
+        t = theta(idx(2));
         if t~=0
             x = 1:size(img,2);
             y = (r - x*cosd(t))/sind(t);
