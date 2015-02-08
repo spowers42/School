@@ -31,7 +31,6 @@ imwrite(noise_edges, fullfile('output', 'ps1-3-b-2.png'));
 %% 3-c
 [H, theta, rho] = hough_lines_acc(noise_edges);  
 peaks = hough_peaks(H, 10);
-disp(size(peaks));
 annotate_peaks(H, peaks, 'ps1-3-c-1.png')  %wat?????
 hough_lines_draw(img_w_noise, 'ps1-3-c-2.png', peaks, rho, theta);
 
@@ -48,7 +47,15 @@ edges = edge(smoothed_img);
 imwrite(edges, fullfile('output', 'ps1-4-b-1.png'));
 
 %% 4-c
-[H, theta, rho] = hough_lines_acc(edges);
-peaks = hough_peaks(H, 20);
+[H, theta, rho] = hough_lines_acc(edges, 'RhoResolution', 2);
+peaks = hough_peaks(H, 20, 'Threshold', 0.4 * max(H(:)));  %0.4 gives 5 lines, .5 gives 3
 annotate_peaks(H, peaks, 'ps1-4-c-1.png');
 hough_lines_draw(img, 'ps1-4-c-2.png', peaks, rho, theta);
+
+%% 5-a
+imwrite(smoothed_img, fullfile('output', 'ps1-5-a-1.png'));
+imwrite(edges, fullfile('output', 'ps1-5-a-2.png'));
+H = hough_circles_acc(edges, 20);
+peaks = houghpeaks(H, 10);
+r = ones(1, size(peaks,1)) * 20;
+draw_circles(peaks, r, smoothed_img, 'ps1-5-a-3.png');
