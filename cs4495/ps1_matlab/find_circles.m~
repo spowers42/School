@@ -5,13 +5,16 @@ function [centers, radii] = find_circles(BW, radius_range)
     % radius_range: Range of circle radii [min max] to look for, in pixels
 
     % TODO: Your code here
-    centers = [];
-    radii = [];
-    H = [];
+    s = size(BW);
+    H = zeros(s(1), s(2), radius_range(2)-radius_range(1)+1)
+    %H = [];
     
     for r=radius_range(1):radius_range(2)
-        H = cat(H, hough_circles_acc(BW, r));   
+        %h = hough_circles_acc(BW, r);
+        %H = cat(3, H, h);  
+        H(:,:,radius_range(1)-r+1) = hough)c
     end
+    [centers, radii] = hough_peaks3d(H, radius_range, 'numpeaks', 20);
 end
 
 

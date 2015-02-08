@@ -22,7 +22,7 @@ function hough_lines_draw(img, outfile, peaks, rho, theta)
             y = (r - x*cosd(t))/sind(t);
         else
             x(1:size(img,2)) = r;
-            y = 1:size(img,1);
+            y = 1:size(img,2); %originally 1, but causes issues with non square
         end
         plot(x, y, 'r-');
     end
