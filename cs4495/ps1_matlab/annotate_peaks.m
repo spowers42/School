@@ -4,6 +4,7 @@ function [ ] = annotate_peaks( M, peaks, outfile )
 %   Detailed explanation goes here
     imshow(im2uint8(mat2gray(M)));
     g = figure(1);
+    colormap hot;  %changed just prior to submission.  
     set(g, 'visible', 'off');
     hold on;
     for idx = 1:size(peaks,1)

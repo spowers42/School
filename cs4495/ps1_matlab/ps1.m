@@ -77,6 +77,10 @@ hough_lines_draw(img, 'ps1-6-a-1.png', peaks, rho, theta);
 
 %% 6-b no code
 %% 6-c exclude non pen
+distances = squareform(pdist(peaks));
+disp(distances);
+%todo minimum non 0 value per row
+%todo filter peaks on distances
 
 %% 7-1 circle finder
 [centers, radii] = find_circles(edges, [20 50]);
@@ -87,7 +91,7 @@ img = rgb2gray(imread(fullfile('input', 'ps1-input3.png')));
 filter_sigma = 6;
 H = fspecial('gaussian', filter_size, filter_sigma);
 smoothed_img = imfilter(img, H, 'replicate');
-edges = edge(smoothed_img);
+edges = edge(smoothed_img, 'canny');
 [H, theta, rho] = hough_lines_acc(edges);  
 peaks = hough_peaks(H, 20);
 hough_lines_draw(img, 'tmp.png', peaks, rho, theta);
