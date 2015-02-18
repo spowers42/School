@@ -28,9 +28,21 @@ imwrite(mat2gray(D_L3), fullfile('output', 'ps2-3-a-1.png'));
 imwrite(mat2gray(D_R3), fullfile('output', 'ps2-3-a-2.png'));
 
 %% 3-b compute disparity with one img * 10%
+L_contrast = L + L * 0.1;
+D_L4 = disparity_ssd(L_contrast, R, 11, true);
+D_R4 = disparity_ssd(R, L_contrast, 11, true);
+imwrite(mat2gray(D_L4), fullfile('output', 'ps2-3-b-1.png'));
+imwrite(mat2gray(D_R4), fullfile('output', 'ps2-3-b-2.png'));
 
 %% 4-a use normalized correlation on pair 0
+D_L5 = disparity_ncorr(L,R);
+D_R5 = disparity_ncorr(R, L);
+imwrite(mat2gray(D_L5), fullfile('output', 'ps2-4-a-1.png'));
+imwrite(mat2gray(D_R5), fullfile('output', 'ps2-4-a-2.png'));
 
 %% 4-b use on noise and contrast versions 
+D_L5 = disparity_ncorr(L_with_noise, R);
+D_R5 = disparity_ncorr(R, L_with_noise);
+
 
 %% 5-a try on pair 2 adjusting to get best results
