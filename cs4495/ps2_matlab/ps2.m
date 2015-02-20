@@ -43,6 +43,23 @@ imwrite(mat2gray(D_R5), fullfile('output', 'ps2-4-a-2.png'));
 %% 4-b use on noise and contrast versions 
 D_L5 = disparity_ncorr(L_with_noise, R);
 D_R5 = disparity_ncorr(R, L_with_noise);
+imwrite(mat2gray(D_L5), fullfile('output', 'ps2-4-b-1.png'));
+imwrite(mat2gray(D_R5), fullfile('output', 'ps2-4-b-2.png'));
+D_L5 = disparity_ncorr(L_contrast, R);
+D_R5 = disparity_ncorr(R, L_contrast);
+imwrite(mat2gray(D_L5), fullfile('output', 'ps2-4-b-3.png'));
+imwrite(mat2gray(D_R5), fullfile('output', 'ps2-4-b-4.png'));
 
 
 %% 5-a try on pair 2 adjusting to get best results
+L = im2double(rgb2gray(imread(fullfile('input', 'pair2-L.png'))));
+R = im2double(rgb2gray(imread(fullfile('input', 'pair2-R.png'))));
+filter_size = 20;
+filter_sigma = 2;
+H = fspecial('gaussian', filter_size, filter_sigma);
+L_s = imfilter(L, H, 'replicate');
+R_s = imfilter(R, H, 'replicate');
+D_L5 = disparity_ncorr(L_s, R_s);
+D_R5 = disparity_ncorr(R_s, L_s);
+imwrite(mat2gray(D_L5), fullfile('output', 'ps2-5-a-1.png'));
+imwrite(mat2gray(D_R5), fullfile('output', 'ps2-5-a-2.png'));

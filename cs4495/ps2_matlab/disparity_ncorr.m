@@ -5,7 +5,7 @@ function D = disparity_ncorr(L, R)
     % R: Grayscale right image, same size as L
     % D: Output disparity map, same size as L, R
 
-    window = 21;
+    window = 21;  %21 works well with less complex images
     half_window = floor(window/2);
     D = zeros(size(L));
     L = padarray(L, [window, window]);

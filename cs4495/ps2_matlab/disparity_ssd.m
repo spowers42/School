@@ -17,7 +17,7 @@ function D = simple_ssd(L, R)
        strip = R(row:row+window-1, :);
        parfor x=1:size(L,2)-window+1
            patch = L(row:row+window-1, x:x+window-1);
-           D(row, x) = x-find_best_match(patch, strip);
+           D(row, x) = abs(x-find_best_match(patch, strip));
        end
     end
     %maybe it is better to average the results from overlapping windows?
