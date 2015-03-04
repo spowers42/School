@@ -1,0 +1,9 @@
+function A = buildA(world, scene)
+    A = [];
+    for idx = 1:size(world, 1)
+        tmp = num2cell(scene(idx, :));
+        [u v] = tmp{:};
+        A = [A; [world(idx, :), 1, [0 0 0 0], world(idx, :)*-u, -u]];
+        A = [A; [[0 0 0 0], world(idx, :), 1, world(idx, :)*-v, -v]];
+    end
+end

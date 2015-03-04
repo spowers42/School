@@ -1,0 +1,7 @@
+function camera = world2camera( M, world )
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+    
+
+end
+
