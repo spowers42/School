@@ -49,3 +49,5 @@ F_hat = U*D*V';
 disp('2b');
 disp(F_hat);
 
+%it seems that F_hat * [p1(1,:),1]' gives a point in [a,b,c] form 
+%not sure how to end up plotting these.  
