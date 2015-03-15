@@ -43,3 +43,8 @@ draw_corner_pair(transA, transB, f1, f2, 'ps4-2-a-2');
 %%2b
  [match1, score1] = run_sift(transA, transB, f1, f2, 'ps4-2-b-1');
  [match2, score2] = run_sift(simA, simB, f3, f4, 'ps4-2-b-2');
+ 
+ %%3a
+ [~,~,best, offset] =ransac_translation(f1, f2, match1);
+ draw_matches(transA, transB, f1', f2', best, 'ps4-3-a-1');
+ disp(size(best)/size(match1));
