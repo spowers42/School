@@ -30,7 +30,7 @@ R4_s = n_suppression(R4, 15);
 draw_corners(transA, R1_s, 'ps4-1-c-1.png');
 draw_corners(transB, R2_s, 'ps4-1-c-2.png');
 draw_corners(simA, R3_s, 'ps4-1-c-3.png');
-draw_corners(simB, R3_s, 'ps4-1-c-4.png');
+draw_corners(simB, R4_s, 'ps4-1-c-4.png');
 
 %%2a
 f1 = get_frames(R1_s, A1);
