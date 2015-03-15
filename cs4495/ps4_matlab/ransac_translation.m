@@ -12,7 +12,7 @@ function [ f1, f2, bestSet, bestOffset ] = ransac_translation( f1, f2, matches )
             pair = matches(:, i);
             currentoffset = [f1(pair(1), 1) - f2(pair(2), 1), f1(pair(1), 2)-f2(pair(2), 2)];
             distance = sqrt(sum((offset-currentoffset).^2));
-            if distance <15
+            if distance < 15
                 currentSet = [currentSet, pair];
             end
         end

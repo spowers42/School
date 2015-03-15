@@ -48,3 +48,9 @@ draw_corner_pair(transA, transB, f1, f2, 'ps4-2-a-2');
  [~,~,best, offset] =ransac_translation(f1, f2, match1);
  draw_matches(transA, transB, f1', f2', best, 'ps4-3-a-1');
  disp(size(best)/size(match1));
+ 
+ %%3b
+ [~, ~, best, M] =ransac_similarity(f3, f4, match2);
+ draw_matches(simA, simB, f3', f4', best, 'ps4-3-a-2');
+ disp(M);
+ disp(size(best)/size(match2));
