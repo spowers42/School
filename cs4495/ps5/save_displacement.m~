@@ -1,0 +1,27 @@
+function [ output_args ] = save_displacement( u, v, filename )
+%SAVE_DISPLACEMENT Summary of this function goes here
+%   Detailed explanation goes here
+    f = figure(1);
+    set(f, 'visible', 'off');
+    hold on;
+    
+
+end
+
+    width = size(img_l, 2);
+    cols = size(frame_r, 1);
+    offset_l = repmat([0,0,6,0], size(frame_l,1),1);
+    offset_r = repmat([width, 0, 6, 0], cols, 1);
+    frame_l = frame_l + offset_l;
+    frame_r = frame_r + offset_r;
+    img = [img_l, img_r];
+    frame = [frame_l; frame_r];
+    imshow(img);
+    f = figure(1);
+    set(f, 'visible', 'off');
+    hold on;
+    p = vl_plotframe(frame');
+    set(p,'linewidth',1);
+    saveas(f, strcat('output/', outfile), 'png');
+    hold off;
+    close(f);

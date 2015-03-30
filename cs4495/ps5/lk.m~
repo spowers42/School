@@ -1,0 +1,22 @@
+function [ output_args ] = lk( img1, img2 )
+%LK Summary of this function goes here
+%   Detailed explanation goes here
+    
+    %built useful matricies
+    [Ix, Iy] = imgradientxy(img1);
+    It = img2 - img1;
+    H = fspecial('gaussian', [5, 5]);
+    Ixx = imfilter(Ix.*Ix, H);
+    Ixy = imfilter(Ix.*Iy, H);
+    Iyy = imfilter(Iy.*Iy, H);
+    Ixt = -1*imfilter(Ix.*It, H);
+    Iyt = -1*imfilter(Iy.*It, H);
+    [height, width] = size(img1);
+    %calculate flow per pixel
+    u = zeros(height, width);
+    v = zeros(height, width);
+    for x = 1:width
+        for y = 1:height
+            uv = 
+end
+
